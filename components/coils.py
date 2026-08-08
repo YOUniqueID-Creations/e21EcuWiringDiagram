@@ -14,16 +14,16 @@ def get_coil():
 
 def get_coil_1(mre_x, mre_y):
     """Returns a 4-pin LS1 coil."""
-    return get_coil().at((mre_x + 3, mre_y)).label('Ignition\nCoil 1', loc='center')
+    return get_coil().at((mre_x + 2, mre_y - 5.9)).label('Ignition\nCoil 1', loc='center')
 
 def get_coil_2(mre_x, mre_y):
     """Returns a 4-pin LS1 coil."""
-    return get_coil().at((mre_x + 3, mre_y - 5)).label('Ignition\nCoil 2', loc='center')
+    return get_coil().at((mre_x + 2.5, mre_y - 4.6)).label('Ignition\nCoil 2', loc='center')
 
 def get_coil_3(mre_x, mre_y):
     """Returns a 4-pin LS1 coil."""
-    return get_coil().at((mre_x + 3, mre_y - 10)).label('Ignition\nCoil 3', loc='center')
+    return get_coil().at((mre_x + 3, mre_y - 3.3)).label('Ignition\nCoil 3', loc='center')
 
 def get_coil_4(mre_x, mre_y):
     """Returns a 4-pin LS1 coil."""
-    return get_coil().at((mre_x + 3, mre_y - 15)).label('Ignition\nCoil 4', loc='center')
+    return get_coil().at((mre_x + 3.5, mre_y - 2)).label('Ignition\nCoil 4', loc='center')
