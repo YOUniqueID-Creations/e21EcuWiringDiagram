@@ -26,6 +26,9 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     coil_3 = d.add(comp.get_coil_3(mre.absanchors['pin11'].x, mre.absanchors['pin11'].y))
     coil_4 = d.add(comp.get_coil_4(mre.absanchors['pin12'].x, mre.absanchors['pin12'].y))
 
+    # Draws ground near coil_1.
+    engine_ground = d.add(comp.get_engine_gnd(coil_1.absanchors['pinC'].x, coil_1.absanchors['pinC'].y))
+
 
     # 2. Compile harness segments using specialized subsystem logic
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
@@ -38,9 +41,9 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.connect_injector_3(d, mre, inj3)
     rt.connect_injector_4(d, mre, inj4)
 
-    rt.connect_coil_1(d, mre, coil_1)
-    rt.connect_coil_2(d, mre, coil_2)
-    rt.connect_coil_3(d, mre, coil_3)
-    rt.connect_coil_4(d, mre, coil_4)
+    rt.connect_coil_1(d, mre, coil_1, engine_ground)
+    rt.connect_coil_2(d, mre, coil_2, engine_ground)
+    rt.connect_coil_3(d, mre, coil_3, engine_ground)
+    rt.connect_coil_4(d, mre, coil_4, engine_ground)
 
     print("✨ Modular harness successfully compiled to microrusefi_full_harness.svg!")
