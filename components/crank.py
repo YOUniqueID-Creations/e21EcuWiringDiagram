@@ -1,4 +1,4 @@
-# components/sensors.py
+# components/crank.py
 import schemdraw.elements as elm
 
 def get_crank_sensor(mre_x, mre_y):

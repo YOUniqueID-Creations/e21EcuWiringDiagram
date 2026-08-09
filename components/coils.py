@@ -1,4 +1,4 @@
-# components/coils.py
+# components/connect_coils.py
 import schemdraw.elements as elm
 
 def get_coil():
