@@ -12,6 +12,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     # Position accessories downstream using absolute pixel-anchors from the ECU module
     wbo = d.add(comp.get_rusefi_wbo(mre.absanchors['pin13'].x, mre.absanchors['pin13'].y))
     crank = d.add(comp.get_crank_sensor(mre.absanchors['pin45'].x, mre.absanchors['pin45'].y))
+    maf = d.add(comp.get_maf(mre.absanchors['pin27'].x, mre.absanchors['pin27'].y))
     tps = d.add(comp.get_tps_sensor(mre.absanchors['pin44'].x, mre.absanchors['pin44'].y))
 
     # Injectors
@@ -34,6 +35,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
     rt.connect_can_bus(d, mre, wbo)
     rt.connect_crank_sensor(d, mre, crank)
+    rt.connect_maf(d, mre, maf)
     rt.connect_tps(d, mre, tps)
 
     rt.connect_injector_1(d, mre, inj1)

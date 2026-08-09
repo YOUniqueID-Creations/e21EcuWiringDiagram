@@ -17,9 +17,9 @@ def get_microrusefi_ecu():
             elm.IcPin(name='AN tmp 4', pin='22', side='left', color="darkgreen"),
             elm.IcPin(name='AN tmp 2 (IAT)', pin='23', side='left', color="darkgreen"),
             elm.IcPin(name='AN tmp 3', pin='24', side='left', color="darkgreen"),
+            elm.IcPin(name='AV volt 1 (MAP/MAF)', pin='27', side='left'),
             elm.IcPin(name='AN volt 6 (WBO)', pin='30', side='left'),
             elm.IcPin(name='AN volt 8', pin='36', side='left'),
-            elm.IcPin(name='MAP sensor supply', pin='39', side='left', color="darkgrey"),
             elm.IcPin(name='AN volt 9', pin='40', side='left'),
             elm.IcPin(name='TPS 5V', pin='44', side='left', color="brown"),
             elm.IcPin(name='Crank Pos', pin='45', side='left', color="green"),
@@ -60,10 +60,10 @@ def get_microrusefi_ecu():
             # elm.IcPin(name='ETB-', pin='8', side='right'),
             # elm.IcPin(name='Hall Cam', pin='25', side='left'),
             # elm.IcPin(name='AV volt 2 (TPS2)', pin='26', side='left'),
-            # elm.IcPin(name='AV volt 1 (MAP)', pin='27', side='left'),
             # elm.IcPin(name='AV volt 10', pin='28', side='left'),
             # elm.IcPin(name='AN volt 7 (PPS2)', pin='30', side='left'),
             # elm.IcPin(name='AN volt 3 (PPS)', pin='31', side='left'),
+            # elm.IcPin(name='MAP sensor supply', pin='39', side='left', color="darkgrey"),
         ],
         edgepadH=0.5, pinspacing=1.2
     ).label('microRusEFI ECU\n(Main Module)', loc='center')
