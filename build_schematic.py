@@ -25,6 +25,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
     rt.connect_can_bus(d, mre, wbo)
     rt.connect_crank_sensor(d, mre, crank)
+    rt.connect_tps(d, mre, tps)
 
     rt.connect_coil_1(d, mre, coil_1)
     rt.connect_coil_2(d, mre, coil_2)
