@@ -10,6 +10,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     mre = d.add(comp.get_microrusefi_ecu())
 
     # Position accessories downstream using absolute pixel-anchors from the ECU module
+    gnd_bus = d.add(comp.get_gnd_bus(mre.absanchors['pin2'].x, mre.absanchors['pin2'].y))
     wbo = d.add(comp.get_rusefi_wbo(mre.absanchors['pin13'].x, mre.absanchors['pin13'].y))
     crank = d.add(comp.get_crank_sensor(mre.absanchors['pin45'].x, mre.absanchors['pin45'].y))
     maf = d.add(comp.get_maf(mre.absanchors['pin27'].x, mre.absanchors['pin27'].y))
@@ -35,7 +36,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
     rt.connect_can_bus(d, mre, wbo)
     rt.connect_crank_sensor(d, mre, crank)
-    rt.connect_maf(d, mre, maf)
+    rt.connect_maf(d, mre, maf, gnd_bus)
     rt.connect_tps(d, mre, tps)
 
     rt.connect_injector_1(d, mre, inj1)
@@ -43,9 +44,9 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.connect_injector_3(d, mre, inj3)
     rt.connect_injector_4(d, mre, inj4)
 
-    rt.connect_coil_1(d, mre, coil_1, engine_ground)
-    rt.connect_coil_2(d, mre, coil_2, engine_ground)
-    rt.connect_coil_3(d, mre, coil_3, engine_ground)
-    rt.connect_coil_4(d, mre, coil_4, engine_ground)
+    rt.connect_coil_1(d, mre, coil_1, engine_ground, gnd_bus)
+    rt.connect_coil_2(d, mre, coil_2, engine_ground, gnd_bus)
+    rt.connect_coil_3(d, mre, coil_3, engine_ground, gnd_bus)
+    rt.connect_coil_4(d, mre, coil_4, engine_ground, gnd_bus)
 
     print("✨ Modular harness successfully compiled to microrusefi_full_harness.svg!")

@@ -5,10 +5,13 @@ def get_coil():
     """Returns a 4-pin LS1 coil."""
     return elm.Ic(
         pins=[
+            # Input/Power
             elm.IcPin(name='ECU Trigger', pin='A', side='left'),
+            elm.IcPin(name='12v', pin='D', side='left'),
+
+            # Grounds
             elm.IcPin(name='Logic GND', pin='B', side='right'),
             elm.IcPin(name='Power Gnd', pin='C', side='right'),
-            elm.IcPin(name='12v', pin='D', side='left'),
         ],
         w=5, h=2.5, pinspacing=1
     )

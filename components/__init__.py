@@ -4,10 +4,9 @@ from .ecu import get_microrusefi_ecu
 from .wideband import get_rusefi_wbo
 from .crank import get_crank_sensor
 from .coils import *
-from .engine_ground import *
+from .grounds import *
 from .fan import *
 from .fuse_box import *
-from .ground_bus import *
 from .injectors import *
 from .maf import *
 from .relay_box import *
