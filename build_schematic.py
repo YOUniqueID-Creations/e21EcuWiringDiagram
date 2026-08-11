@@ -11,7 +11,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
 
     # Position accessories downstream using absolute pixel-anchors from the ECU module
     gnd_bus = d.add(comp.get_gnd_bus(mre.absanchors['pin2'].x, mre.absanchors['pin2'].y))
-    wbo = d.add(comp.get_rusefi_wbo(mre.absanchors['pin13'].x, mre.absanchors['pin13'].y))
+    wbo = d.add(comp.get_rusefi_wbo(mre.absanchors['pin48'].x, mre.absanchors['pin48'].y))
     crank = d.add(comp.get_crank_sensor(mre.absanchors['pin45'].x, mre.absanchors['pin45'].y))
     maf = d.add(comp.get_maf(mre.absanchors['pin27'].x, mre.absanchors['pin27'].y))
     tps = d.add(comp.get_tps_sensor(mre.absanchors['pin44'].x, mre.absanchors['pin44'].y))

@@ -15,4 +15,4 @@ def get_rusefi_wbo(mre_x, mre_y):
             elm.IcPin(name='LSU Vm', pin='8', side='right'),
         ],
         edgepadH=1, pinspacing=1
-    ).at((mre_x + 5.0, mre_y - 2.0)).label('rusEFI WBO\n042 Mini', loc='center')
+    ).at((mre_x + 2.0, mre_y)).label('rusEFI WBO\n042 Mini', loc='center')

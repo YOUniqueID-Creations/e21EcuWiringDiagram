@@ -18,7 +18,7 @@ def get_microrusefi_ecu():
             elm.IcPin(name='AN tmp 2 (IAT)', pin='23', side='left', color="darkgreen"),
             elm.IcPin(name='AN tmp 3', pin='24', side='left', color="darkgreen"),
             elm.IcPin(name='AV volt 1 (MAP/MAF)', pin='27', side='left'),
-            elm.IcPin(name='AN volt 6 (WBO)', pin='30', side='left'),
+            elm.IcPin(name='AN volt 6 (WBO)', pin='32', side='left'),
             elm.IcPin(name='AN volt 8', pin='36', side='left'),
             elm.IcPin(name='AN volt 9', pin='40', side='left'),
             elm.IcPin(name='TPS 5V', pin='44', side='left', color="brown"),
