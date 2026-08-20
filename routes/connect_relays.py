@@ -1,14 +1,16 @@
 # routes/connect_relays.py
 import schemdraw.elements as elm
+from fontTools.diff import color
 
 
-def connect_relays(d, battery, circuit_breaker, relays, gnd_bus):
+def connect_relays(d, battery, circuit_breaker, relays, gnd_bus, mre):
     """
     Connects main power and ground for the relay box:
     - Battery (+) connects to Main Circuit Breaker.
     - Battery (-) connects to Ground Bus.
     - Main Circuit Breaker connects to Pin 30 (Common) of all 6 relays.
     - Pin 85 (Ground) of all 6 relays connects to the Ground Bus.
+    - ECU Pin 29 (Main Relay Low) connects to Relay 2 Pin 86 (SW).
     """
     # 1. Connect Battery (+) to Circuit Breaker input
     if hasattr(battery, 'end'):
@@ -46,3 +48,6 @@ def connect_relays(d, battery, circuit_breaker, relays, gnd_bus):
     for relay in relay_list:
         d.add(elm.Wire('|-').at(cb_out).to(relay.pin30))
         d.add(elm.Wire('|-').at(relay.pin85).to(gnd_ref))
+
+    # 4. Connect ECU Pin 29 (Main Relay Low) to Relay 2 Pin 86 (SW/Coil Trigger)
+    d.add(elm.Wire('-|-').color('grey').at(relay_list[1].pin86).to(mre.pin29).label('Main Relay Trigger'))
