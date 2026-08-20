@@ -31,8 +31,17 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     # Draws ground near coil_1.
     engine_ground = d.add(comp.get_engine_gnd(coil_1.absanchors['pinC'].x, coil_1.absanchors['pinC'].y))
 
+    # Power Delivery: Battery, Circuit Breaker, Relay Box (6 relays), and Fuse Box
+    battery = d.add(comp.get_battery(mre.absanchors['pin1'].x - 28, mre.absanchors['pin1'].y + 6))
+    breaker = d.add(comp.get_circuit_breaker(mre.absanchors['pin1'].x - 24, mre.absanchors['pin1'].y + 6))
+    relay_box = [d.add(r) for r in comp.get_relay_box(mre.absanchors['pin1'].x - 19, mre.absanchors['pin1'].y + 6, spacing=3.0)]
+    fuse_box = d.add(comp.get_fuse_box(mre.absanchors['pin1'].x - 14, mre.absanchors['pin1'].y + 3))
+
 
     # 2. Compile harness segments using specialized subsystem logic
+    rt.connect_relays(d, battery, breaker, relay_box, gnd_bus)
+    rt.connect_fuse_box(d, relay_box[1], fuse_box)
+
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
     rt.connect_can_bus(d, mre, wbo)
     rt.connect_crank_sensor(d, mre, crank)
