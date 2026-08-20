@@ -17,4 +17,4 @@ def get_fuse_box(x=0, y=0):
             elm.IcPin(name='Fuse 6 (Aux)', pin='F6', side='right'),
         ],
         w=2.8, h=2.8, pinspacing=0.6
-    ).at((x, y)).label('Fuse Box', loc='center')
+    ).at((x, y + 22)).label('Fuse Box', loc='center')

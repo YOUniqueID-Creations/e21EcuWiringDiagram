@@ -27,20 +27,11 @@ def connect_relays(d, battery, circuit_breaker, relays, gnd_bus):
 
     d.add(elm.Wire('|-').at(bat_pos).to(cb_in).label('+12V Battery Main'))
 
-    # 2. Connect Battery (-) to Ground Bus
-    if hasattr(battery, 'start'):
-        bat_neg = battery.start
-    elif hasattr(battery, 'pinNEG'):
-        bat_neg = battery.pinNEG
-    else:
-        bat_neg = battery.end
-
     if hasattr(gnd_bus, 'start'):
         gnd_ref = gnd_bus.start
     else:
         gnd_ref = gnd_bus
 
-    d.add(elm.Wire('|-').at(bat_neg).to(gnd_ref))
 
     # Convert relays argument if dict or single
     if isinstance(relays, dict):
