@@ -2,7 +2,7 @@
 from schemdraw import elements as elm
 
 
-def connect_coil_1(d, mre, coil, engine_gnd, gnd_bus):
+def connect_coil_1(d, mre, coil, engine_gnd, gnd_bus, fuse_box):
     """
     Routes the ECU signal to the coil and grounds the coil.
     """
@@ -13,9 +13,10 @@ def connect_coil_1(d, mre, coil, engine_gnd, gnd_bus):
     d.add(elm.Wire('|-').at(coil.pinB).to(gnd_bus.start))
     d.add(elm.Wire('-|').at(coil.pinC).to(engine_gnd.start))
 
-    # TODO: WIRE ALL PIN D (+12V) To Relay
+    # Power
+    d.add(elm.Wire('-|').color('indigo').at(coil.pinD).to(fuse_box.pinF4).label('15A'))
 
-def connect_coil_2(d, mre, coil, engine_gnd, gnd_bus):
+def connect_coil_2(d, mre, coil, engine_gnd, gnd_bus, fuse_box):
     """
     Routes the ECU signal to the coil and grounds the coil.
     """
@@ -26,7 +27,10 @@ def connect_coil_2(d, mre, coil, engine_gnd, gnd_bus):
     d.add(elm.Wire('|-').at(coil.pinB).to(gnd_bus.start))
     d.add(elm.Wire('-|').at(coil.pinC).to(engine_gnd.start))
 
-def connect_coil_3(d, mre, coil, engine_gnd, gnd_bus):
+    # Power
+    d.add(elm.Wire('-|').color('indigo').at(coil.pinD).to(fuse_box.pinF4))
+
+def connect_coil_3(d, mre, coil, engine_gnd, gnd_bus, fuse_box):
     """
     Routes the ECU signal to the coil and grounds the coil.
     """
@@ -37,7 +41,10 @@ def connect_coil_3(d, mre, coil, engine_gnd, gnd_bus):
     d.add(elm.Wire('|-').at(coil.pinB).to(gnd_bus.start))
     d.add(elm.Wire('-|').at(coil.pinC).to(engine_gnd.start))
 
-def connect_coil_4(d, mre, coil, engine_gnd, gnd_bus):
+    # Power
+    d.add(elm.Wire('-|').color('indigo').at(coil.pinD).to(fuse_box.pinF4))
+
+def connect_coil_4(d, mre, coil, engine_gnd, gnd_bus, fuse_box):
     """
     Routes the ECU signal to the coil and grounds the coil.
     """
@@ -47,3 +54,6 @@ def connect_coil_4(d, mre, coil, engine_gnd, gnd_bus):
     # Grounds
     d.add(elm.Wire('|-').at(coil.pinB).to(gnd_bus.start))
     d.add(elm.Wire('-|').at(coil.pinC).to(engine_gnd.start))
+
+    # Power
+    d.add(elm.Wire('-|').color('indigo').at(coil.pinD).to(fuse_box.pinF4))

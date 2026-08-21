@@ -55,9 +55,9 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.connect_injector_3(d, mre, inj3, fuse_box)
     rt.connect_injector_4(d, mre, inj4, fuse_box)
 
-    rt.connect_coil_1(d, mre, coil_1, engine_ground, gnd_bus)
-    rt.connect_coil_2(d, mre, coil_2, engine_ground, gnd_bus)
-    rt.connect_coil_3(d, mre, coil_3, engine_ground, gnd_bus)
-    rt.connect_coil_4(d, mre, coil_4, engine_ground, gnd_bus)
+    rt.connect_coil_1(d, mre, coil_1, engine_ground, gnd_bus, fuse_box)
+    rt.connect_coil_2(d, mre, coil_2, engine_ground, gnd_bus, fuse_box)
+    rt.connect_coil_3(d, mre, coil_3, engine_ground, gnd_bus, fuse_box)
+    rt.connect_coil_4(d, mre, coil_4, engine_ground, gnd_bus, fuse_box)
 
     print("✨ Modular harness successfully compiled to microrusefi_full_harness.svg!")
