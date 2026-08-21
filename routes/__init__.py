@@ -11,3 +11,9 @@ from .connect_tps import *
 from .wire_ecu_power_grouds import *
 from .connect_clt import *
 from .connect_stepper import *
+from .connect_fan import *
+from .connect_usb import *
+from .connect_oxygen_sensor import *
+
+
+

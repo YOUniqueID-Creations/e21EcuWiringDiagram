@@ -12,17 +12,19 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     # Position accessories downstream using absolute pixel-anchors from the ECU module
     gnd_bus = d.add(comp.get_gnd_bus(mre.absanchors['pin2'].x, mre.absanchors['pin2'].y))
     wbo = d.add(comp.get_rusefi_wbo(mre.absanchors['pin48'].x, mre.absanchors['pin48'].y))
+    o2_sensor = d.add(comp.get_oxygen_sensor(wbo.absanchors['pin3'].x + 3, wbo.absanchors['pin3'].y - 1.0))
     crank = d.add(comp.get_crank_sensor(mre.absanchors['pin45'].x, mre.absanchors['pin45'].y))
     maf = d.add(comp.get_maf(mre.absanchors['pin27'].x, mre.absanchors['pin27'].y))
     tps = d.add(comp.get_tps_sensor(mre.absanchors['pin44'].x, mre.absanchors['pin44'].y))
     clt = d.add(comp.get_clt_sensor(mre.absanchors['pin18'].x, mre.absanchors['pin18'].y))
     stepper = d.add(comp.get_stepper().at((mre.absanchors['pin35'].x + 3, mre.absanchors['pin35'].y - 3)))
 
-    # Injectors
-    inj1 = d.add(comp.get_injector_1(mre.absanchors['pin37'].x, mre.absanchors['pin37'].y))
-    inj2 = d.add(comp.get_injector_2(mre.absanchors['pin38'].x, mre.absanchors['pin38'].y))
-    inj3 = d.add(comp.get_injector_3(mre.absanchors['pin41'].x, mre.absanchors['pin41'].y))
-    inj4 = d.add(comp.get_injector_4(mre.absanchors['pin42'].x, mre.absanchors['pin42'].y))
+    # Injectors (shifted further right to make space for wideband and O2 sensor)
+    inj_offset_x = 4.0
+    inj1 = d.add(comp.get_injector_1(mre.absanchors['pin37'].x + inj_offset_x, mre.absanchors['pin37'].y))
+    inj2 = d.add(comp.get_injector_2(mre.absanchors['pin38'].x + inj_offset_x, mre.absanchors['pin38'].y))
+    inj3 = d.add(comp.get_injector_3(mre.absanchors['pin41'].x + inj_offset_x, mre.absanchors['pin41'].y))
+    inj4 = d.add(comp.get_injector_4(mre.absanchors['pin42'].x + inj_offset_x, mre.absanchors['pin42'].y))
 
     # Coils
     coil_1 = d.add(comp.get_coil_1(mre.absanchors['pin9'].x, mre.absanchors['pin9'].y))
@@ -38,6 +40,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     breaker = d.add(comp.get_circuit_breaker(mre.absanchors['pin1'].x - 24, mre.absanchors['pin1'].y + 6))
     relay_box = [d.add(r) for r in comp.get_relay_box(mre.absanchors['pin1'].x - 19, mre.absanchors['pin1'].y + 6, spacing=3.0)]
     fuse_box = d.add(comp.get_fuse_box(mre.absanchors['pin1'].x - 14, mre.absanchors['pin1'].y + 3))
+    fan = d.add(comp.get_fan_controller(relay_box[2].absanchors['pin87a'].x, relay_box[2].absanchors['pin87a'].y))
 
 
     # 2. Compile harness segments using specialized subsystem logic
@@ -45,7 +48,10 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.connect_fuse_box(d, relay_box[1], fuse_box)
 
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
-    rt.connect_can_bus(d, mre, wbo, fuse_box)
+    rt.connect_can_bus(d, mre, wbo, fuse_box, gnd_bus)
+    rt.connect_oxygen_sensor(d, wbo, o2_sensor)
+    rt.connect_fan(d, fan, relay_box[2])
+    rt.connect_usb(d, mre)
     rt.connect_crank_sensor(d, mre, crank)
     rt.connect_maf(d, mre, maf, gnd_bus, fuse_box)
     rt.connect_tps(d, mre, tps)

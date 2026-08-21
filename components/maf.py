@@ -6,7 +6,7 @@ def get_maf(mre_x, mre_y):
     return elm.Ic(
         pins=[
             elm.IcPin(name='no op', pin='A', side='left',),
-            elm.IcPin(name='+12V', pin='B', side='top'), # Fuse Block
+            elm.IcPin(name='+12V', pin='B', side='left'), # Fuse Block
             elm.IcPin(name='GND', pin='C', side='bottom'), # Ground Bus
 
             # ECU
@@ -16,4 +16,4 @@ def get_maf(mre_x, mre_y):
 
         ],
         w=1.5, h=2.0, pinspacing=0.8
-    ).at((mre_x - 11, mre_y - 2.1)).label('MAF', loc='center')
+    ).at((mre_x - 10.5, mre_y - 2.1)).label('MAF', loc='center')

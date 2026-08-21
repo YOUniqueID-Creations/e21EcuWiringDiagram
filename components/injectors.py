@@ -13,13 +13,13 @@ def get_injector():
 
 def get_injector_1(mre_x, mre_y):
 
-    return get_injector().at((mre_x + 8, mre_y - 1.8)).label('Injector 1', loc='center')
+    return get_injector().at((mre_x + 9, mre_y - 1.8)).label('Injector 1', loc='center')
 
 def get_injector_2(mre_x, mre_y):
-    return get_injector().at((mre_x + 8.2, mre_y)).label('Injector 2', loc='center')
+    return get_injector().at((mre_x + 9.2, mre_y)).label('Injector 2', loc='center')
 
 def get_injector_3(mre_x, mre_y):
-    return get_injector().at((mre_x + 8.1, mre_y + 2)).label('Injector 3', loc='center')
+    return get_injector().at((mre_x + 9.1, mre_y + 2)).label('Injector 3', loc='center')
 
 def get_injector_4(mre_x, mre_y):
-    return get_injector().at((mre_x + 8, mre_y + 4)).label('Injector 4', loc='center')
+    return get_injector().at((mre_x + 9, mre_y + 4)).label('Injector 4', loc='center')

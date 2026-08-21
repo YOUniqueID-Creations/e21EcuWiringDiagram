@@ -7,7 +7,7 @@ def connect_injector_1(d, mre, inj, fuse_box):
     Routes injector to a +12V source and connects the injector to the dedicated ECU trigger (GND).
     """
     # +12V
-    d.add(elm.Wire('|-').at(inj.pin2).to(fuse_box.pinF3).label('15A'))
+    d.add(elm.Wire('-|-').at(inj.pin2).to(fuse_box.pinF3).label('15A'))
 
     # Wire Coil Pin A (ECU Trigger) to ECU Pin 37
     d.add(elm.Wire('|-').at(inj.pin1).to(mre.pin37))

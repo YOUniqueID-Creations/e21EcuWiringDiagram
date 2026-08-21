@@ -2,6 +2,7 @@
 
 from .ecu import get_microrusefi_ecu
 from .wideband import get_rusefi_wbo
+from .oxygen_sensor import get_oxygen_sensor
 from .crank import get_crank_sensor
 from .coils import *
 from .grounds import *
