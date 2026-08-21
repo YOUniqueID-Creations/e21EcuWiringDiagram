@@ -44,7 +44,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.connect_fuse_box(d, relay_box[1], fuse_box)
 
     rt.wire_ecu_power_grouds.wire_ecu_power_grounds(d, mre)
-    rt.connect_can_bus(d, mre, wbo)
+    rt.connect_can_bus(d, mre, wbo, fuse_box)
     rt.connect_crank_sensor(d, mre, crank)
     rt.connect_maf(d, mre, maf, gnd_bus, fuse_box)
     rt.connect_tps(d, mre, tps)

@@ -10,7 +10,7 @@ def connect_maf(d, mre, maf, gnd_bus, fuse_box):
     """
     # Pin A No Op
     # Pin B -> Fuse
-    d.add(elm.Wire('-|').at(maf.pinB).to(fuse_box.pinF2))
+    d.add(elm.Wire('-|').at(maf.pinB).to(fuse_box.pinF2).label('10A'))
 
     # Wire MAF Pin C to GND Bus.
     d.add(elm.Wire('|-').at(maf.pinC).to(gnd_bus.start))
