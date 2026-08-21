@@ -12,4 +12,4 @@ def connect_clt(d, mre, clt):
     d.add(elm.Wire('|-').at(clt.pin1).to(mre.pin18))
 
     # Wire CLT Pin 2 (Signal GND) to ECU Pin 17
-    d.add(elm.Wire('|-').at(clt.pin2).to(mre.pin17))
+    d.add(elm.Wire('|-').color('red').at(clt.pin2).to(mre.pin17))

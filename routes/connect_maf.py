@@ -2,14 +2,15 @@
 
 import schemdraw.elements as elm
 
-def connect_maf(d, mre, maf, gnd_bus):
+def connect_maf(d, mre, maf, gnd_bus, fuse_box):
     """
     Routes the maf to 12v fuse,
     routes to the ground bus,
     and routes MAF Signal, IAT Signal, and SGND back to the ECU.
     """
     # Pin A No Op
-    # TODO: Wire Pin B (+12V fuse)
+    # Pin B -> Fuse
+    d.add(elm.Wire('-|').at(maf.pinB).to(fuse_box.pinF2))
 
     # Wire MAF Pin C to GND Bus.
     d.add(elm.Wire('|-').at(maf.pinC).to(gnd_bus.start))
@@ -18,7 +19,7 @@ def connect_maf(d, mre, maf, gnd_bus):
     d.add(elm.Wire('|-').at(maf.pinD).to(mre.pin27))
 
     # Wire MAF Pin E (IAT) back to ECU Pin 23 (AN Temp 2/IAT)
-    d.add(elm.Wire('|-').at(maf.pinE).to(mre.pin23))
+    d.add(elm.Wire('|-').color('green').at(maf.pinE).to(mre.pin23))
 
-    # Wire MAF Pin F (IAT Signal GND) to ECU Pin 17 (Signal GND - shared with TPS)
-    d.add(elm.Wire('|-').at(maf.pinF).to(mre.pin17))
+    # Wire MAF Pin F (IAT Signal GND) to ECU Pin 21 (Signal GND)
+    d.add(elm.Wire('|-').color('green').at(maf.pinF).to(mre.pin21))

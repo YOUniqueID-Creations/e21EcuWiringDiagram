@@ -6,7 +6,7 @@ def get_maf(mre_x, mre_y):
     return elm.Ic(
         pins=[
             elm.IcPin(name='no op', pin='A', side='left',),
-            elm.IcPin(name='+12V', pin='B', side='bottom'), # Fuse Block
+            elm.IcPin(name='+12V', pin='B', side='top'), # Fuse Block
             elm.IcPin(name='GND', pin='C', side='bottom'), # Ground Bus
 
             # ECU

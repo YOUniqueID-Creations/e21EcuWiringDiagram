@@ -13,7 +13,5 @@ def connect_tps(d, mre, tps):
     # Wire TPS Signal
     d.add(elm.Wire('|-').at(tps.pin2).to(mre.pin20))
 
-    # Wire TPS Pin 3 (GND) back to ECU Pin ? (Signal GND)
-    d.add(elm.Line().right().at(tps.pin3).length(0.5))
-    d.add(elm.Line().down().toy(mre.pin17.y))
-    d.add(elm.Line().right().to(mre.pin17))
+    # Wire TPS Pin 3 (GND) back to ECU Pin 17 (Signal GND)
+    d.add(elm.Wire('|-').color('red').at(tps.pin3).to(mre.pin17))
