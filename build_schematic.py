@@ -16,6 +16,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     maf = d.add(comp.get_maf(mre.absanchors['pin27'].x, mre.absanchors['pin27'].y))
     tps = d.add(comp.get_tps_sensor(mre.absanchors['pin44'].x, mre.absanchors['pin44'].y))
     clt = d.add(comp.get_clt_sensor(mre.absanchors['pin18'].x, mre.absanchors['pin18'].y))
+    stepper = d.add(comp.get_stepper().at((mre.absanchors['pin35'].x + 3, mre.absanchors['pin35'].y - 3)))
 
     # Injectors
     inj1 = d.add(comp.get_injector_1(mre.absanchors['pin37'].x, mre.absanchors['pin37'].y))
@@ -49,6 +50,7 @@ with schemdraw.Drawing(file='microrusefi_full_harness.svg') as d:
     rt.connect_maf(d, mre, maf, gnd_bus, fuse_box)
     rt.connect_tps(d, mre, tps)
     rt.connect_clt(d, mre, clt)
+    rt.connect_stepper(d, mre, stepper)
 
     rt.connect_injector_1(d, mre, inj1, fuse_box)
     rt.connect_injector_2(d, mre, inj2, fuse_box)

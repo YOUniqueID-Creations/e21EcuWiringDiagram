@@ -46,7 +46,7 @@ def get_microrusefi_ecu():
             elm.IcPin(name='Injector 2', pin='38', side='right', color="darkgrey"),
             elm.IcPin(name='Injector 3', pin='41', side='right', color="brown"),
             elm.IcPin(name='Injector 4', pin='42', side='right', color="brown"),
-            elm.IcPin(name='GP Out 4 (IDLE stepper 2+)', pin='43', side='right', color="brown"),
+            elm.IcPin(name='GP Out 4 (IDLE stepper 2-)', pin='43', side='right', color="brown"),
             elm.IcPin(name='CAN L', pin='47', side='right', color="gold"),
             elm.IcPin(name='CAN H', pin='48', side='right', color="gold"),
 
